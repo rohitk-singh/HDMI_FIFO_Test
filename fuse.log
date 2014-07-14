@@ -1,0 +1,27 @@
+Running: C:\Xilinx\14.7\ISE_DS\ISE\bin\nt\unwrapped\fuse.exe -intstyle ise -incremental -lib secureip -o E:/HDMI_FIFO_Test/tb_read_process_sim_isim_beh.exe -prj E:/HDMI_FIFO_Test/tb_read_process_sim_beh.prj work.tb_read_process_sim 
+ISim P.20131013 (signature 0x8ef4fb42)
+Number of CPUs detected in this system: 4
+Turning on mult-threading, number of parallel sub-compilation jobs: 8 
+Determining compilation order of HDL files
+Parsing VHDL file "E:/HDMI_FIFO_Test/rising_edge_detect.vhd" into library work
+Parsing VHDL file "E:/HDMI_FIFO_Test/read_process_sim.vhd" into library work
+Parsing VHDL file "E:/HDMI_FIFO_Test/tb_read_process_sim.vhd" into library work
+Starting static elaboration
+Completed static elaboration
+Fuse Memory Usage: 112980 KB
+Fuse CPU Usage: 1403 ms
+Compiling package standard
+Compiling package std_logic_1164
+Compiling package std_logic_arith
+Compiling package std_logic_unsigned
+Compiling package numeric_std
+Compiling package vcomponents
+Compiling architecture behavioral of entity rising_edge_detector [rising_edge_detector_default]
+Compiling architecture behavioral of entity read_process_sim [read_process_sim_default]
+Compiling architecture behavior of entity tb_read_process_sim
+Time Resolution for simulation is 1ps.
+Waiting for 1 sub-compilation(s) to finish...
+Compiled 11 VHDL Units
+Built simulation executable E:/HDMI_FIFO_Test/tb_read_process_sim_isim_beh.exe
+Fuse Memory Usage: 135044 KB
+Fuse CPU Usage: 1965 ms

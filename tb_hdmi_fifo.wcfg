@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="E:/HDMI_FIFO_Test/tb_vgacapture_isim_beh.wdb" id="1" type="auto">
+         <top_modules>
+            <top_module name="numeric_std" />
+            <top_module name="std_logic_1164" />
+            <top_module name="std_logic_arith" />
+            <top_module name="std_logic_unsigned" />
+            <top_module name="tb_vgacapture" />
+            <top_module name="vcomponents" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <WVObjectSize size="24" />
+   <wvobject fp_name="/tb_vgacapture/datack" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">datack</obj_property>
+      <obj_property name="ObjectShortName">datack</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_vgacapture/hsout" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">hsout</obj_property>
+      <obj_property name="ObjectShortName">hsout</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_vgacapture/uut/hsout_rising_edge" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">hsout_rising_edge</obj_property>
+      <obj_property name="ObjectShortName">hsout_rising_edge</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_vgacapture/vsout" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">vsout</obj_property>
+      <obj_property name="ObjectShortName">vsout</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_vgacapture/uut/vsout_rising_edge" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">vsout_rising_edge</obj_property>
+      <obj_property name="ObjectShortName">vsout_rising_edge</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_vgacapture/vactive" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">vactive</obj_property>
+      <obj_property name="ObjectShortName">vactive</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_vgacapture/hactive" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">hactive</obj_property>
+      <obj_property name="ObjectShortName">hactive</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_vgacapture/uut/write_state" type="other" db_ref_id="1">
+      <obj_property name="ElementShortName">write_state</obj_property>
+      <obj_property name="ObjectShortName">write_state</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_vgacapture/uut/read_state" type="other" db_ref_id="1">
+      <obj_property name="ElementShortName">read_state</obj_property>
+      <obj_property name="ObjectShortName">read_state</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_vgacapture/uut/vstate" type="other" db_ref_id="1">
+      <obj_property name="ElementShortName">vstate</obj_property>
+      <obj_property name="ObjectShortName">vstate</obj_property>
+   </wvobject>
+   <wvobject fp_name="group61" type="group">
+      <obj_property name="label">FIFO</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/tb_vgacapture/uut/fifo_din" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">fifo_din[23:0]</obj_property>
+         <obj_property name="ObjectShortName">fifo_din[23:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_vgacapture/uut/fifo_wr_data_count" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">fifo_wr_data_count[13:0]</obj_property>
+         <obj_property name="ObjectShortName">fifo_wr_data_count[13:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_vgacapture/uut/fifo_wr_en" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">fifo_wr_en</obj_property>
+         <obj_property name="ObjectShortName">fifo_wr_en</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_vgacapture/uut/fifo_wr_clk" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">fifo_wr_clk</obj_property>
+         <obj_property name="ObjectShortName">fifo_wr_clk</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_vgacapture/uut/fifo_empty" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">fifo_empty</obj_property>
+         <obj_property name="ObjectShortName">fifo_empty</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_vgacapture/uut/fifo_almost_empty" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">fifo_almost_empty</obj_property>
+         <obj_property name="ObjectShortName">fifo_almost_empty</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_vgacapture/uut/fifo_full" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">fifo_full</obj_property>
+         <obj_property name="ObjectShortName">fifo_full</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_vgacapture/uut/fifo_almost_full" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">fifo_almost_full</obj_property>
+         <obj_property name="ObjectShortName">fifo_almost_full</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_vgacapture/uut/fifo_rst" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">fifo_rst</obj_property>
+         <obj_property name="ObjectShortName">fifo_rst</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_vgacapture/uut/fifo_rd_en" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">fifo_rd_en</obj_property>
+         <obj_property name="ObjectShortName">fifo_rd_en</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_vgacapture/uut/fifo_rd_clk" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">fifo_rd_clk</obj_property>
+         <obj_property name="ObjectShortName">fifo_rd_clk</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_vgacapture/uut/fifo_overflow" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">fifo_overflow</obj_property>
+         <obj_property name="ObjectShortName">fifo_overflow</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_vgacapture/uut/fifo_underflow" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">fifo_underflow</obj_property>
+         <obj_property name="ObjectShortName">fifo_underflow</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_vgacapture/uut/fifo_valid" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">fifo_valid</obj_property>
+         <obj_property name="ObjectShortName">fifo_valid</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="/tb_vgacapture/uut/hstate" type="other" db_ref_id="1">
+      <obj_property name="ElementShortName">hstate</obj_property>
+      <obj_property name="ObjectShortName">hstate</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_vgacapture/de" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">de</obj_property>
+      <obj_property name="ObjectShortName">de</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_vgacapture/hs" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">hs</obj_property>
+      <obj_property name="ObjectShortName">hs</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_vgacapture/vs" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">vs</obj_property>
+      <obj_property name="ObjectShortName">vs</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_vgacapture/r_in" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">r_in[7:0]</obj_property>
+      <obj_property name="ObjectShortName">r_in[7:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_vgacapture/g_in" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">g_in[7:0]</obj_property>
+      <obj_property name="ObjectShortName">g_in[7:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_vgacapture/b_in" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">b_in[7:0]</obj_property>
+      <obj_property name="ObjectShortName">b_in[7:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_vgacapture/red_out" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">red_out[7:0]</obj_property>
+      <obj_property name="ObjectShortName">red_out[7:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_vgacapture/green_out" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">green_out[7:0]</obj_property>
+      <obj_property name="ObjectShortName">green_out[7:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_vgacapture/blue_out" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">blue_out[7:0]</obj_property>
+      <obj_property name="ObjectShortName">blue_out[7:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_vgacapture/counterx" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">counterx[15:0]</obj_property>
+      <obj_property name="ObjectShortName">counterx[15:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_vgacapture/countery" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">countery[15:0]</obj_property>
+      <obj_property name="ObjectShortName">countery[15:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_vgacapture/data" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">data[23:0]</obj_property>
+      <obj_property name="ObjectShortName">data[23:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+</wave_config>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="E:/HDMI_FIFO_Test/tb_read_process_sim_isim_beh.wdb" id="1" type="auto">
+         <top_modules>
+            <top_module name="numeric_std" />
+            <top_module name="std_logic_1164" />
+            <top_module name="std_logic_arith" />
+            <top_module name="std_logic_unsigned" />
+            <top_module name="tb_read_process_sim" />
+            <top_module name="vcomponents" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <WVObjectSize size="14" />
+   <wvobject fp_name="/tb_read_process_sim/rst" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">rst</obj_property>
+      <obj_property name="ObjectShortName">rst</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_read_process_sim/uut/state_hread" type="other" db_ref_id="1">
+      <obj_property name="ElementShortName">state_hread</obj_property>
+      <obj_property name="ObjectShortName">state_hread</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_read_process_sim/uut/state_vread" type="other" db_ref_id="1">
+      <obj_property name="ElementShortName">state_vread</obj_property>
+      <obj_property name="ObjectShortName">state_vread</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_read_process_sim/img_pclk" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">img_pclk</obj_property>
+      <obj_property name="ObjectShortName">img_pclk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_read_process_sim/uut/vstaterd" type="other" db_ref_id="1">
+      <obj_property name="ElementShortName">vstaterd</obj_property>
+      <obj_property name="ObjectShortName">vstaterd</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_read_process_sim/uut/hstaterd" type="other" db_ref_id="1">
+      <obj_property name="ElementShortName">hstaterd</obj_property>
+      <obj_property name="ObjectShortName">hstaterd</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_read_process_sim/vs" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">vs</obj_property>
+      <obj_property name="ObjectShortName">vs</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_read_process_sim/counterx" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">counterx[15:0]</obj_property>
+      <obj_property name="ObjectShortName">counterx[15:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_read_process_sim/countery" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">countery[15:0]</obj_property>
+      <obj_property name="ObjectShortName">countery[15:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_read_process_sim/uut/hcounterrd" type="other" db_ref_id="1">
+      <obj_property name="ElementShortName">hcounterrd</obj_property>
+      <obj_property name="ObjectShortName">hcounterrd</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_read_process_sim/uut/vcounterrd" type="other" db_ref_id="1">
+      <obj_property name="ElementShortName">vcounterrd</obj_property>
+      <obj_property name="ObjectShortName">vcounterrd</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_read_process_sim/uut/vsout_delayed_rising_edge" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">vsout_delayed_rising_edge</obj_property>
+      <obj_property name="ObjectShortName">vsout_delayed_rising_edge</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_read_process_sim/uut/vsync" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">vsync</obj_property>
+      <obj_property name="ObjectShortName">vsync</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_read_process_sim/uut/hsync" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">hsync</obj_property>
+      <obj_property name="ObjectShortName">hsync</obj_property>
+   </wvobject>
+</wave_config>
