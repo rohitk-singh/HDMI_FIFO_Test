@@ -131,6 +131,9 @@ signal state_vRead : read_vStates := state_vReset;
 signal patanahi   : std_logic;
 signal hsout_delayed_rising_edge : std_logic;
 signal vsout_delayed_rising_edge : std_logic;
+signal vsout_delayed             : std_logic;
+signal hsout_delayed             : std_logic;
+
 
 -- Video Signals
 signal rgb_out  : std_logic_vector(23 downto 0) := (others => '0');
@@ -204,13 +207,17 @@ elsif rising_edge(DATACK) then
 	
 	if vsout_rising_edge = '1' then
 		write_state <= state_reset;
-		
+		vCounterWr <= 0;
+		hCounterWr <= 0;
+		fifo_wr_en <= '0';
+				
 	elsif vsout_rising_edge = '0' then
 		
 		case write_state is
 			when state_reset => 
-				fifo_rst <= '1';
-				fifo_wr_en <= '0';
+				--fifo_rst <= '1';
+				--fifo_wr_en <= '0';
+				hCounterWr <= 0;
 				write_state <= state_wait_for_hsout;
 				
 			when state_wait_for_hsout =>
@@ -222,11 +229,18 @@ elsif rising_edge(DATACK) then
 				
 			when state_backporch =>
 				--increment hCounterWr
-				fifo_rst <= '0';
 				hCounterWr <= hCounterWr + 1;
-				if hCounterWr = (136 + 160) then
+				if hCOunterWr = (200 - 1) then --This block moved from state_reset
+					fifo_rst <= '1';        --Reset the FIFO when 200 cycles over. VSOUT delayed by 100 cycles
+				   fifo_wr_en <= '0';
+				else
+					fifo_rst <= '0';
+				end if;
+				
+				if hCounterWr = (136 + 160 - 1) then
 					write_state <= state_active;
 					fifo_wr_en <= '1';
+					fifo_rst <= '0';
 					fifo_din <= R_in & G_in & B_in;
 				end if;
 				
@@ -234,7 +248,7 @@ elsif rising_edge(DATACK) then
 				--increment hCounterWr
 				fifo_din <= R_in & G_in & B_in;
 				hCounterWr <= hCounterWr + 1;
-				if hCounterWr = (136 + 160 + 1024) then
+				if hCounterWr = (136 + 160 + 1024 - 1) then
 					write_state <= state_frontporch;
 					fifo_wr_en <= '0';
 					fifo_din <= (others => '0');
@@ -244,7 +258,7 @@ elsif rising_edge(DATACK) then
 				--increment hCounterWr
 				-- And, do nothing else
 				hCounterWr <= hCounterWr + 1;
-				if hCounterWr > (136 + 160 + 1024 + 20) then
+				if hCounterWr > (136 + 160 + 1024 + 20 - 1) then
 					fifo_wr_en <= '0';
 					fifo_din <= (others => '0');
 					write_state <= state_reset; --Reset FIFO after making sure 
@@ -258,6 +272,9 @@ end process;
 
 -- Entities of HSOUT, VSOUT delayer
 -- Entities of HSOUT, VSOUT rising_edge detector
+vsout_delayer: entity work.delayer PORT MAP(input => vsout, output => vsout_delayed, clk => img_pclk); --Try also img_clk
+hsout_delayer: entity work.delayer PORT MAP(input => hsout, output => hsout_delayed, clk => DATACK); --Try also img_clk
+vs_delayed_edge_detect: entity work.rising_edge_detector PORT MAP(CLK => img_pclk, SIGNAL_IN => vsout_delayed, OUTPUT => vsout_delayed_rising_edge);
 
 read_fifo: process(rst, img_pclk)
 begin
@@ -271,6 +288,8 @@ elsif rising_edge(img_pclk) then
 	if vsout_delayed_rising_edge = '1' then
 		state_vRead <= state_vReset;
 		vCounterRd <= 0;
+		fifo_rd_en <= '0';
+		hCounterRd <= 0;
 		--startvCounterRd
 	end if;
 	
@@ -290,6 +309,7 @@ elsif rising_edge(img_pclk) then
 				when state_hReset      => hCounterRd <= 0;
 											     hSync <= '1';
 											     hActive <= '0';
+												  fifo_rd_en <= '0';
 											     state_hRead <= state_hSyncPulse;
 				when state_hSyncPulse  => hSync <= '1';
 												  hCounterRd <= hCounterRd + 1;
@@ -302,17 +322,25 @@ elsif rising_edge(img_pclk) then
 												  if hCounterRd = (spX + bpX - 1) then
 													  hActive <= '1';
 													  state_hRead <= state_hActive;
+													  fifo_rd_en <= '1';
+													  rgb_out <= fifo_dout;
 												  end if;		
 				
 				when state_hActive     => hActive <= '1';
 												  hCounterRd <= hCounterRd + 1;
+												  rgb_out <= fifo_dout;
+												  fifo_rd_en <= '1';
 												  if hCounterRd = (spX + bpX + resX - 1) then
 													  hActive <= '0';
 													  state_hRead <= state_hFrontPorch;
+													  fifo_rd_en <= '0';
+													  rgb_out <= (others => '0');
 												  end if;
 				
 				when state_hFrontPorch => hActive <= '0';
 												  hCounterRd <= hCounterRd + 1;
+												  fifo_rd_en <= '0';
+												  rgb_out <= (others => '0');
 												  if hCounterRd = (spX + bpX + resX + fpX - 1) then
 													  state_hRead <= state_hReset;
 													  vCounterRd <= vCounterRd + 1;
@@ -330,6 +358,7 @@ elsif rising_edge(img_pclk) then
 				when state_hReset      => hCounterRd <= 0;
 											     hSync <= '1';
 											     hActive <= '0';
+												  fifo_rd_en <= '0';
 											     state_hRead <= state_hSyncPulse;
 				when state_hSyncPulse  => hSync <= '1';
 												  hCounterRd <= hCounterRd + 1;
@@ -342,17 +371,25 @@ elsif rising_edge(img_pclk) then
 												  if hCounterRd = (spX + bpX - 1) then
 													  hActive <= '1';
 													  state_hRead <= state_hActive;
+													  fifo_rd_en <= '1';
+													  rgb_out <= fifo_dout;
 												  end if;		
 				
 				when state_hActive     => hActive <= '1';
 												  hCounterRd <= hCounterRd + 1;
+												  rgb_out <= fifo_dout;
+													fifo_rd_en <= '1';
 												  if hCounterRd = (spX + bpX + resX - 1) then
 													  hActive <= '0';
 													  state_hRead <= state_hFrontPorch;
+													  fifo_rd_en <= '0';
+													  rgb_out <= (others => '0');
 												  end if;
 				
 				when state_hFrontPorch => hActive <= '0';
 												  hCounterRd <= hCounterRd + 1;
+												  fifo_rd_en <= '0';
+													rgb_out <= (others => '0');
 												  if hCounterRd = (spX + bpX + resX + fpX - 1) then
 													  state_hRead <= state_hReset;
 													  vCounterRd <= vCounterRd + 1;
@@ -389,7 +426,7 @@ elsif rising_edge(img_pclk) then
 														rgb_out <= fifo_dout;
 													end if;
 				
-				when state_hActive     =>		hActive <= '1';
+				when state_hActive     =>	hActive <= '1';
 													hCounterRd <= hCounterRd + 1;
 													rgb_out <= fifo_dout;
 													fifo_rd_en <= '1';
@@ -421,6 +458,7 @@ elsif rising_edge(img_pclk) then
 				when state_hReset      => hCounterRd <= 0;
 											     hSync <= '1';
 											     hActive <= '0';
+												  fifo_rd_en <= '0';
 											     state_hRead <= state_hSyncPulse;
 				when state_hSyncPulse  => hSync <= '1';
 												  hCounterRd <= hCounterRd + 1;
@@ -433,17 +471,25 @@ elsif rising_edge(img_pclk) then
 												  if hCounterRd = (spX + bpX - 1) then
 													  hActive <= '1';
 													  state_hRead <= state_hActive;
+													  fifo_rd_en <= '1';
+													  rgb_out <= fifo_dout;
 												  end if;		
 				
 				when state_hActive     => hActive <= '1';
 												  hCounterRd <= hCounterRd + 1;
+												  rgb_out <= fifo_dout;
+												  fifo_rd_en <= '1';
 												  if hCounterRd = (spX + bpX + resX - 1) then
 													  hActive <= '0';
 													  state_hRead <= state_hFrontPorch;
+													  fifo_rd_en <= '0';
+													  rgb_out <= (others => '0');
 												  end if;
 				
 				when state_hFrontPorch => hActive <= '0';
 												  hCounterRd <= hCounterRd + 1;
+												  fifo_rd_en <= '0';
+												  rgb_out <= (others => '0');
 												  if hCounterRd = (spX + bpX + resX + fpX - 1) then
 													  state_hRead <= state_hReset;
 													  vCounterRd <= vCounterRd + 1;

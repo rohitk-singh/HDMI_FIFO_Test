@@ -7,7 +7,7 @@ use UNISIM.VComponents.all;
 
 entity delayer is
 	generic( 
-		DELAY_AMOUNT : integer := 12
+		DELAY_AMOUNT : integer := 40
 );
 	port(
 		input  : in  std_logic;
